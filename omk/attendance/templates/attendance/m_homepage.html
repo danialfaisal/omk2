@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">OMK</a>
+        <a class="navbar-brand" href="{% url 'attendance:index' %}">OMK</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -60,7 +60,7 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
-              <a href="{% url 't_class_date' request.user.mentor.id %}">
+              <a href="{% url 'attendance:t_clas' request.user.mentor.id 1 %}">
                 <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
               </a>
               <div class="card-body">
@@ -68,14 +68,14 @@
               <p class="card-text">Mark Student Attendance</p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 't_class_date' request.user.mentor.id %}"> Enter Attendance</a>
+                <a class="btn btn-primary" role="button" href="{% url 'attendance:t_clas' request.user.mentor.id 1 %}"> Enter Attendance</a>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
-              <a href="#">
+              <a href="{% url 'attendance:t_clas' request.user.mentor.id 2 %}">
                 <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
               </a>
               <div class="card-body">
@@ -83,7 +83,7 @@
               <p class="card-text">Student Grades</p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="#">Student Grades</a>
+                <a class="btn btn-primary" role="button" href="{% url 'attendance:t_clas' request.user.mentor.id 2 %}">Student Grades</a>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@
 
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
-            <a href="#">
+            <a href="{% url 'attendance:t_clas' request.user.mentor.id 3 %}">
                 <img class="card-img-top" src="{% static 'info/images/reports.png' %}" alt="">
             </a>
             <div class="card-body">
@@ -100,7 +100,7 @@
               <p class="card-text">Attendance & Grade reports</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Generate Reports</a>
+              <a href="{% url 'attendance:t_clas' request.user.mentor.id 3 %}" class="btn btn-primary">Generate Reports</a>
             </div>
           </div>
         </div>

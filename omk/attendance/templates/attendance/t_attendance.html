@@ -1,15 +1,12 @@
 {% extends 'attendance/base.html' %}
 {% block content %}
-{% if mentor1 %}
+{% if c.student_set.all %}
 
-
-<form action="#" method="post">
+<form action="{% url 'attendance:confirm' assc.id %}" method="post">
             {% csrf_token %}
     <div class="card mb-3">
         <div class="card-header">
           <i class="fas fa-table"></i>
-         <b>Attendance</b>
-        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -20,18 +17,18 @@
                 </tr>
               </thead>
                 <tbody>
-                {% for student in mentor1 %}
+                {% for s in c.student_set.all %}
                     <tr>
-                    <td>{{student}}</td>
+                    <td>{{s.name}}</td>
                     <td>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                                 <label class="btn btn-outline-success active">
-                                    <input type="radio" name="{{ student.id }}" id="option1" autocomplete="off" value="present" checked> Present
+                                    <input type="radio" name="{{ s.USN }}" id="option1" autocomplete="off" value="present" checked> Present
                                 </label>
 
                                 <label class="btn btn-outline-danger">
-                                    <input type="radio" name="{{ student.id }}" id="option2" autocomplete="off" value="absent"> Absent
+                                    <input type="radio" name="{{ s.USN }}" id="option2" autocomplete="off" value="absent"> Absent
                                 </label>
                         </div>
                     </td>
@@ -42,12 +39,12 @@
           </div>
         </div>
       </div>
+
+
     <input class="btn btn-success" type="submit" value="Submit">
 </form>
-
 {% else %}
-<p>No Student is scheduled for this date</p>
+    <p>No students in Class</p>
 {% endif %}
 
 {% endblock %}
-

@@ -36,7 +36,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="{% url 'index' %}">OMK</a>
+      <a class="navbar-brand mr-1" href="{% url 'attendance:index' %}">OMK</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -65,41 +65,51 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'index' %}">
+              <a class="nav-link" href="{% url 'attendance:index' %}">
                 <span>Home</span>
               </a>
             </li>
         {% if request.user.is_employee %}
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span>Attendance</span>
+              <a class="nav-link" href="{% url 'attendance:semester_list' %}">
+                <span>Semester List</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span>Attendance By Subject</span>
+              <a class="nav-link" href="{% url 'attendance:mentor_list' %}">
+                <span>Mentor List</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span>Grades</span>
+              <a class="nav-link" href="{% url 'attendance:student_list' %}">
+                <span>Student List</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'attendance:assign_list' %}">
+                <span>Assignments List</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'attendance:assigntime_list' %}">
+                <span>AssignmentTime List</span>
               </a>
 
 
 
         {% elif request.user.is_mentor %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 't_class_date' request.user.mentor.id %}">
+              <a class="nav-link" href="{% url 'attendance:t_clas' request.user.mentor.id 1 %}">
                 <span>Attendance</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{% url 'attendance:t_clas' request.user.mentor.id 2 %}">
                 <span>Grades</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{% url 'attendance:t_clas' request.user.mentor.id 3 %}">
                 <span>Reports</span>
               </a>
             </li>

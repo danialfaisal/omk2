@@ -1,0 +1,41 @@
+{% extends 'attendance/base.html' %}
+{% block content %}
+    <h1>All Schedules</h1>
+    <div class="card mb-3">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Level</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for ass in teacher1.assign_set.all %}
+                    <tr>
+                        <td>{{ ass.semester }}</td>
+                        <td>{{ ass.level_id }}</td>
+                        <td>
+                            {% if choice == 1 %}
+                                <a class="btn btn-primary" href="{% url 'attendance:t_class_date' ass.id %}" role="button">Attendance</a>
+                                <a class="btn btn-danger" href="{% url 'attendance:t_student' ass.id %}">View Students</a>
+
+                            {% elif choice == 2 %}
+                                <a class="btn btn-danger" href="#">View Students</a>
+                            {% elif choice == 3 %}
+                                <a class="btn btn-danger" href="#">Generate reports</a>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                    {% empty %}
+                            <p>Mentor does not have any schedule</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+    </div>
+{% endblock %}
