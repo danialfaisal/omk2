@@ -72,27 +72,36 @@
         {% if request.user.is_employee %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'attendance:semester_list' %}">
-                <span>Semester List</span>
+                <span>Semesters</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'attendance:level_list' %}">
+                <span>Grade Levels</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'attendance:mentor_list' %}">
-                <span>Mentor List</span>
+                <span>Mentors</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'attendance:student_list' %}">
-                <span>Student List</span>
+                <span>Students</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'attendance:assign_list' %}">
-                <span>Assignments List</span>
+                <span>Assignments</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'attendance:assigntime_list' %}">
-                <span>AssignmentTime List</span>
+                <span>Assignment Times</span>
+              </a>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'attendance:grade_list' %}">
+                <span>Student Grades</span>
               </a>
 
 
@@ -108,11 +117,13 @@
                 <span>Grades</span>
               </a>
             </li>
-            <li class="nav-item">
+
+            <!--<li class="nav-item">
               <a class="nav-link" href="{% url 'attendance:t_clas' request.user.mentor.id 3 %}">
                 <span>Reports</span>
               </a>
-            </li>
+            </li>-->
+
         {% endif %}
       </ul>
 

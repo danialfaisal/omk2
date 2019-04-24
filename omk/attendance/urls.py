@@ -17,7 +17,8 @@ urlpatterns = [
     path('mentor/<int:ass_c_id>/attendance/confirm/', views.confirm, name='confirm'),
     path('mentor/<slug:stud_id>/<slug:semester_id>/attendance/', views.t_attendance_detail, name='t_attendance_detail'),
     path('mentor/<int:att_id>/change_attendance/', views.change_att, name='change_att'),
-    path('mentor/<int:assign_id>/Report/', views.t_report, name='t_report'),
+    path('mentor/<int:assign_id>/Students/grade/', views.grade, name='t_grades'),
+
 
     # Employee URLS
 

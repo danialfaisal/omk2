@@ -27,7 +27,7 @@ class StudentForm(forms.ModelForm):
 class AssignForm(forms.ModelForm):
    class Meta:
        model = Assign
-       fields = ('level_id', 'mentor',)
+       fields = ('semester','level_id', 'mentor',)
 
 class AssignTimeForm(forms.ModelForm):
    class Meta:

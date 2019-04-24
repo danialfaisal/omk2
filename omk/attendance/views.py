@@ -150,15 +150,21 @@ def change_att(request, att_id):
     return HttpResponseRedirect(reverse('attendance:t_attendance_detail', args=(a.student.USN, a.semester_id)))
 
 
-
 @login_required()
-def t_report(request, assign_id):
-    ass = get_object_or_404(Assign, id=assign_id)
-    sc_list = []
-    for stud in ass.level_id.student_set.all():
-        a = Grade.objects.get(student=stud, semester=ass.semester)
-        sc_list.append(a)
-    return render(request, 'attendance/t_report.html', {'sc_list': sc_list})
+def grade(request, assign_id):
+    ass = Assign.objects.get(id=assign_id)
+    semester = ass.semester_id
+    sc_list = Grade.objects.filter(semester_id=semester)
+    return render(request, 'attendance/t_grades.html', {'sc_list': sc_list})
+
+# @login_required()
+# def t_report(request, assign_id):
+#     ass = get_object_or_404(Assign, id=assign_id)
+#     sc_list = []
+#     for stud in ass.level_id.student_set.all():
+#         a = Grade.objects.get(student=stud, semester=ass.semester)
+#         sc_list.append(a)
+#     return render(request, 'attendance/t_report.html', {'sc_list': sc_list})
 
 
 # EMPLOYEE VIEWS
